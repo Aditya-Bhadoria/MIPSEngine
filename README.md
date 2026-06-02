@@ -63,6 +63,26 @@ make
 
 ---
 
+## Bare-Metal Testing (Python Generators)
+
+If you don't want to use Docker or a C cross-compiler, you can still test the emulator's core architecture using the included Python scripts. These scripts act as micro-assemblers, manually packing ELF headers and MIPS instructions into raw binary files.
+
+The scripts are located in `tests/generators/`. You can run the entire automated test suite (which generates the binaries and tests memory, branching, syscalls, and math logic) with a single command:
+
+```bash
+make test-all
+```
+
+Or individual scripts too by:
+
+```bash
+make
+python3 <filename>.py
+./MIPSEngine --trace tests/<filename>.elf
+```
+
+---
+
 ## Compiling C Programs for MIPSEngine (macOS / Apple Silicon)
 
 MIPSEngine runs bare-metal MIPS binaries. Because macOS does not natively provide a MIPS
